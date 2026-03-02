@@ -328,7 +328,7 @@ metadata:
   labels:
     app.kubernetes.io/instance: next-node-standard
   annotations:
-    benchmark.platformatic.dev/expose: "true"
+    benchmark.dockerdeveloper3.dev/expose: "true"
     service.beta.kubernetes.io/aws-load-balancer-type: "nlb"
     service.beta.kubernetes.io/aws-load-balancer-scheme: "internal"
 spec:
@@ -349,7 +349,7 @@ metadata:
   labels:
     app.kubernetes.io/instance: next-node-caged
   annotations:
-    benchmark.platformatic.dev/expose: "true"
+    benchmark.dockerdeveloper3.dev/expose: "true"
     service.beta.kubernetes.io/aws-load-balancer-type: "nlb"
     service.beta.kubernetes.io/aws-load-balancer-scheme: "internal"
 spec:
@@ -370,7 +370,7 @@ metadata:
   labels:
     app.kubernetes.io/instance: next-watt-standard
   annotations:
-    benchmark.platformatic.dev/expose: "true"
+    benchmark.dockerdeveloper3.dev/expose: "true"
     service.beta.kubernetes.io/aws-load-balancer-type: "nlb"
     service.beta.kubernetes.io/aws-load-balancer-scheme: "internal"
 spec:
@@ -395,7 +395,7 @@ metadata:
   labels:
     app.kubernetes.io/instance: next-watt-caged
   annotations:
-    benchmark.platformatic.dev/expose: "true"
+    benchmark.dockerdeveloper3.dev/expose: "true"
     service.beta.kubernetes.io/aws-load-balancer-type: "nlb"
     service.beta.kubernetes.io/aws-load-balancer-scheme: "internal"
 spec:

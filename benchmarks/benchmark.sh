@@ -23,7 +23,7 @@ ECR_REPO_NAME="${ECR_REPO_NAME:-caged-benchmark}"
 
 # Image configuration: standard Node.js vs pointer-compressed (caged)
 STANDARD_BASE_IMAGE="${STANDARD_BASE_IMAGE:-node:25-bookworm-slim}"
-CAGED_BASE_IMAGE="${CAGED_BASE_IMAGE:-platformatic/node-caged:slim}"
+CAGED_BASE_IMAGE="${CAGED_BASE_IMAGE:-dockerdeveloper3/node-caged:slim}"
 
 # Infrastructure resource names (set by creation functions)
 CLUSTER_ROLE_NAME=""
@@ -1129,12 +1129,12 @@ find_annotated_loadbalancer_services() {
 
 	# Find all services with the benchmark annotation
 	local services=$(kubectl --context "$KUBE_CONTEXT" get services -o json | jq -r '.items[] |
-		select(.metadata.annotations["benchmark.platformatic.dev/expose"] == "true") |
+		select(.metadata.annotations["benchmark.dockerdeveloper3.dev/expose"] == "true") |
 		select(.spec.type == "LoadBalancer") |
 		.metadata.name')
 
 	if [[ -z "$services" ]]; then
-		error "No LoadBalancer services found with annotation benchmark.platformatic.dev/expose=true"
+		error "No LoadBalancer services found with annotation benchmark.dockerdeveloper3.dev/expose=true"
 		log "Available services:"
 		kubectl --context "$KUBE_CONTEXT" get services
 		return 1

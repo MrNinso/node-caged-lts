@@ -4,7 +4,7 @@
 #
 # Features:
 # - Manual trigger only (workflow_dispatch)
-# - Automatically detects latest Node.js v25.x version
+# - Automatically detects latest Node.js v24.x version
 # - Skips build if version already exists on DockerHub
 # - Force rebuild option to bypass version check
 
@@ -20,7 +20,7 @@ on:
 
 env:
   REGISTRY: docker.io
-  IMAGE_NAME: platformatic/node-caged
+  IMAGE_NAME: dockerdeveloper3/node-caged-lts
 
 jobs:
   # =============================================================================
@@ -32,20 +32,20 @@ jobs:
       should_build: ${{ steps.check.outputs.should_build }}
       node_version: ${{ steps.version.outputs.version }}
     steps:
-      - name: Get latest Node.js v25.x version
+      - name: Get latest Node.js v24.x version
         id: version
         run: |
-          # Fetch latest v25.x release from nodejs/node
+          # Fetch latest v24.x release from nodejs/node
           VERSION=$(gh api repos/nodejs/node/releases \
-            --jq '[.[] | select(.tag_name | startswith("v25.")) | .tag_name][0]' \
+            --jq '[.[] | select(.tag_name | startswith("v24.")) | .tag_name][0]' \
             | sed 's/^v//')
 
           if [ -z "$VERSION" ]; then
-            echo "ERROR: Could not determine Node.js v25.x version"
+            echo "ERROR: Could not determine Node.js v24.x version"
             exit 1
           fi
 
-          echo "Latest Node.js v25.x version: $VERSION"
+          echo "Latest Node.js v24.x version: $VERSION"
           echo "version=$VERSION" >> $GITHUB_OUTPUT
         env:
           GH_TOKEN: ${{ github.token }}

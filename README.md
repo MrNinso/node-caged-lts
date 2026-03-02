@@ -1,7 +1,7 @@
 # Node.js Pointer Compression Experiments
 
-[![Build and Publish Docker Images](https://github.com/platformatic/node-caged/actions/workflows/build-publish.yml/badge.svg)](https://github.com/platformatic/node-caged/actions/workflows/build-publish.yml)
-[![Docker Pulls](https://img.shields.io/docker/pulls/platformatic/node-caged)](https://hub.docker.com/r/platformatic/node-caged)
+[![Build and Publish Docker Images](https://github.com/dockerdeveloper3/node-caged-lts/actions/workflows/build-publish.yml/badge.svg)](https://github.com/dockerdeveloper3/node-caged-lts/actions/workflows/build-publish.yml)
+[![Docker Pulls](https://img.shields.io/docker/pulls/dockerdeveloper3/node-caged-lts)](https://hub.docker.com/r/dockerdeveloper3/node-caged-lts)
 
 This repository contains experiments for building Node.js with V8 pointer compression enabled. Pointer compression is a V8 optimization that reduces memory usage by using 32-bit compressed pointers instead of full 64-bit pointers.
 
@@ -11,21 +11,21 @@ Pre-built multi-architecture images (amd64/arm64) are available on DockerHub:
 
 ```bash
 # Pull the latest image (Debian bookworm, recommended)
-docker pull platformatic/node-caged:latest
+docker pull dockerdeveloper3/node-caged-lts:latest
 
 # Or use a specific variant
-docker pull platformatic/node-caged:bookworm  # Full Debian
-docker pull platformatic/node-caged:slim      # Minimal Debian
-docker pull platformatic/node-caged:alpine    # Alpine Linux (experimental)
+docker pull dockerdeveloper3/node-caged-lts:bookworm  # Full Debian
+docker pull dockerdeveloper3/node-caged-lts:slim      # Minimal Debian
+docker pull dockerdeveloper3/node-caged-lts:alpine    # Alpine Linux (experimental)
 
 # Pin to a major Node.js version (recommended for most users)
-docker pull platformatic/node-caged:25
-docker pull platformatic/node-caged:25-slim
-docker pull platformatic/node-caged:25-alpine
+docker pull dockerdeveloper3/node-caged-lts-lts:24
+docker pull dockerdeveloper3/node-caged-lts:24-slim
+docker pull dockerdeveloper3/node-caged-lts:24-alpine
 
 # Pin to an exact Node.js version
-docker pull platformatic/node-caged:25.6.1
-docker pull platformatic/node-caged:25.6.1-slim
+docker pull dockerdeveloper3/node-caged-lts:24.14.0
+docker pull dockerdeveloper3/node-caged-lts:24.14.0-slim
 ```
 
 ### Available Tags
@@ -35,10 +35,10 @@ docker pull platformatic/node-caged:25.6.1-slim
 | `latest`, `bookworm` | Latest build on Debian bookworm (recommended) |
 | `slim` | Minimal Debian bookworm-slim runtime (~100MB smaller) |
 | `alpine` | Alpine Linux with musl libc (smallest, experimental) |
-| `{major}` | Latest patch of major version on bookworm (e.g., `25`) |
-| `{major}-{variant}` | Latest patch of major version with variant (e.g., `25-slim`) |
-| `{version}` | Exact Node.js version on bookworm (e.g., `25.6.1`) |
-| `{version}-{variant}` | Exact version and variant (e.g., `25.6.1-alpine`) |
+| `{major}` | Latest patch of major version on bookworm (e.g., `24`) |
+| `{major}-{variant}` | Latest patch of major version with variant (e.g., `24-slim`) |
+| `{version}` | Exact Node.js version on bookworm (e.g., `24.14.0`) |
+| `{version}-{variant}` | Exact version and variant (e.g., `24.14.0-alpine`) |
 
 ### Variant Comparison
 
@@ -59,17 +59,6 @@ Run the tests:
 ```bash
 ./run-tests.sh
 ```
-
-## Benchmark Results
-
-Memory comparison between standard Node.js 22 and pointer-compressed Node.js 25 (with `--expose-gc`):
-
-| Data Structure | Standard Node 22 | Pointer Compressed | Savings |
-|----------------|------------------|-------------------|---------|
-| **Array of Objects** (1M items) | 40.47 MB (42.43 B/item) | 20.24 MB (21.22 B/item) | **50%** |
-| **Nested Objects** (500K items) | 50.21 MB (105.29 B/item) | 24.64 MB (51.68 B/item) | **51%** |
-| **Linked List** (500K items) | 19.08 MB (40.01 B/item) | 9.54 MB (20.01 B/item) | **50%** |
-| **Array of Arrays** (500K items) | 38.76 MB (81.28 B/item) | 19.38 MB (40.64 B/item) | **50%** |
 
 ### Key Findings
 
@@ -97,7 +86,7 @@ Memory comparison between standard Node.js 22 and pointer-compressed Node.js 25 
 
 ## How It Works
 
-The Dockerfile builds Node.js from the v25.x branch with the `--experimental-enable-pointer-compression` configure flag. This enables V8's pointer compression feature which uses 32-bit offsets from a base address instead of full 64-bit pointers.
+The Dockerfile builds Node.js from the 24.x branch with the `--experimental-enable-pointer-compression` configure flag. This enables V8's pointer compression feature which uses 32-bit offsets from a base address instead of full 64-bit pointers.
 
 ## Test Scripts
 
@@ -139,7 +128,7 @@ docker build -f docker/alpine/Dockerfile -t node-pointer-compression:alpine .
 The GitHub Actions workflow builds and publishes multi-architecture images:
 
 - **Trigger**: Manual only (`workflow_dispatch`)
-- **Version detection**: Automatically detects latest Node.js v25.x release
+- **Version detection**: Automatically detects latest Node.js 24.x release
 - **Duplicate check**: Skips build if version already exists on DockerHub
 - **Force rebuild**: Option to bypass version check and rebuild
 

@@ -31,10 +31,10 @@ RUN npm run build
 
 ENTRYPOINT ["./entrypoint.sh"]
 
-LABEL org.opencontainers.image.authors="Platformatic"
+LABEL org.opencontainers.image.authors="dockerdeveloper3"
 LABEL org.opencontainers.image.created="$BUILD_TIME"
 LABEL org.opencontainers.image.revision="$COMMIT_HASH"
 LABEL org.opencontainers.image.licenses="Apache-2.0"
-LABEL org.opencontainers.image.source="https://github.com/platformatic/node-caged"
+LABEL org.opencontainers.image.source="https://github.com/dockerdeveloper3/node-caged"
 LABEL org.opencontainers.image.title="benchmarks/next"
 LABEL org.opencontainers.image.description="Next.js benchmark app for standard vs pointer-compressed Node.js"

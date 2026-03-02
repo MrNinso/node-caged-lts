@@ -1,7 +1,7 @@
 # Dockerfile for Node.js with pointer compression - Debian Bookworm variant
 # Full Debian bookworm with glibc, similar to official Node.js images
 
-# Node.js version to build (tag or branch, e.g., v25.6.1 or v25.x)
+# Node.js version to build (tag or branch, e.g., v24.x)
 ARG NODE_VERSION=v25.x
 
 FROM debian:bookworm

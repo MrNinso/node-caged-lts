@@ -16,7 +16,7 @@ SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 PROJECT_DIR="$(dirname "$SCRIPT_DIR")"
 
 # Configuration
-IMAGE_NAME="${IMAGE_NAME:-platformatic/node-pointer-compression}"
+IMAGE_NAME="${IMAGE_NAME:-dockerdeveloper3/node-pointer-compression}"
 VARIANTS=("bookworm" "slim" "alpine")
 PLATFORMS="${PLATFORMS:-linux/amd64,linux/arm64}"
 
@@ -47,7 +47,7 @@ while [[ $# -gt 0 ]]; do
             echo "Variants: bookworm, slim, alpine (default: all)"
             echo ""
             echo "Environment variables:"
-            echo "  IMAGE_NAME   Docker image name (default: platformatic/node-pointer-compression)"
+            echo "  IMAGE_NAME   Docker image name (default: dockerdeveloper3/node-pointer-compression)"
             echo "  PLATFORMS    Target platforms (default: linux/amd64,linux/arm64)"
             exit 0
             ;;

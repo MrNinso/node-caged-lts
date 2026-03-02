@@ -45,5 +45,5 @@ Dockerfiles in `docker/` build Node.js from the v25.x branch with the `--experim
 
 Key build details:
 - Compiler: GCC 12 (required for C++20 support in V8)
-- Node.js branch: v25.x (configurable via `NODE_VERSION` build arg)
+- Node.js branch: v24.x (configurable via `NODE_VERSION` build arg)
 - Build flag: `--experimental-enable-pointer-compression`

@@ -1,8 +1,8 @@
 # Dockerfile for Node.js with pointer compression - Slim variant
 # Multi-stage build: compile on bookworm, runtime on bookworm-slim
 
-# Node.js version to build (tag or branch, e.g., v25.6.1 or v25.x)
-ARG NODE_VERSION=v25.x
+# Node.js version to build (tag or branch, e.g., v24.x)
+ARG NODE_VERSION=v24.x
 
 # =============================================================================
 # Stage 1: Build Node.js with pointer compression

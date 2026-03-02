@@ -1,12 +1,12 @@
-# Node.js with Pointer Compression (node-caged)
+# Node.js with Pointer Compression (node-caged-lts)
 
 Node.js built with V8 pointer compression enabled, delivering **~50% memory reduction** for pointer-heavy data structures.
 
 ## Quick Start
 
 ```bash
-docker pull platformatic/node-caged:latest
-docker run -it platformatic/node-caged node
+docker pull dockerdeveloper3/node-caged-lts:latest
+docker run -it dockerdeveloper3/node-caged-lts node
 ```
 
 ## Available Tags
@@ -40,5 +40,5 @@ Multi-arch images for `linux/amd64` and `linux/arm64`.
 
 ## Links
 
-- [GitHub Repository](https://github.com/platformatic/node-caged)
+- [GitHub Repository](https://github.com/dockerdeveloper3/node-caged-lts)
 - [Platformatic](https://platformatic.dev)
